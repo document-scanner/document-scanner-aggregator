@@ -1,0 +1,3 @@
+[submodule "jfreesane"]
+	path = jfreesane
+	url = git@github.com:sjamesr/jfreesane.git
