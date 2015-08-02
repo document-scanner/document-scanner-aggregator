@@ -1,3 +1,6 @@
 [submodule "jfreesane"]
 	path = jfreesane
 	url = git@github.com:sjamesr/jfreesane.git
+[submodule "javaocr"]
+	path = javaocr
+	url = git://git.code.sf.net/p/javaocr/source
