@@ -4,3 +4,6 @@
 [submodule "javaocr"]
 	path = javaocr
 	url = git://git.code.sf.net/p/javaocr/source
+[submodule "reflection-form-builder"]
+	path = reflection-form-builder
+	url = git@github.com:krichter722/reflection-form-builder.git
