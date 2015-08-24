@@ -3,79 +3,49 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package richtercloud.orientdb.document.scanner.model;
+package richtercloud.document.scanner.model;
 
-import java.io.Serializable;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import richtercloud.reflection.form.builder.components.annotations.OCRResult;
+import richtercloud.reflection.form.builder.components.annotations.ScanResult;
 
 /**
  *
  * @author richter
  */
-public class Document implements Serializable {
+@Entity
+public class Document extends AbstractDocument {
     private static final long serialVersionUID = 1L;
-    private Contact sender;
-    private Date sent;
-    private Date received;
     private String comment;
+    private String identifier;
+    @ScanResult
+    private byte[] scanData;
+    @OCRResult
+    private String scanOCRText;
+    @ManyToMany(mappedBy = "documents")
+    private List<Payment> payments;
 
     protected Document() {
     }
 
-    public Document(Contact sender, Date sent, Date received, String comment) {
-        this.sender = sender;
-        this.sent = sent;
-        this.received = received;
+    public Document(String comment, String identifier, byte[] scanData, String scanOCRText, List<Payment> payments, Date date, Date receptionDate, Location originalLocation, boolean originalLost, Long id, Company contact) {
+        super(date, receptionDate, originalLocation, originalLost, id, contact);
         this.comment = comment;
-    }
-
-    /**
-     * @return the sender
-     */
-    public Contact getSender() {
-        return sender;
-    }
-
-    /**
-     * @param sender the sender to set
-     */
-    public void setSender(Contact sender) {
-        this.sender = sender;
-    }
-
-    /**
-     * @return the sent
-     */
-    public Date getSent() {
-        return sent;
-    }
-
-    /**
-     * @param sent the sent to set
-     */
-    public void setSent(Date sent) {
-        this.sent = sent;
-    }
-
-    /**
-     * @return the received
-     */
-    public Date getReceived() {
-        return received;
-    }
-
-    /**
-     * @param received the received to set
-     */
-    public void setReceived(Date received) {
-        this.received = received;
+        this.identifier = identifier;
+        this.scanData = scanData;
+        this.scanOCRText = scanOCRText;
+        this.payments = payments;
     }
 
     /**
      * @return the comment
      */
     public String getComment() {
-        return comment;
+        return this.comment;
     }
 
     /**
@@ -83,6 +53,62 @@ public class Document implements Serializable {
      */
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    /**
+     * @return the identifier
+     */
+    public String getIdentifier() {
+        return this.identifier;
+    }
+
+    /**
+     * @param identifier the identifier to set
+     */
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    /**
+     * @return the scanData
+     */
+    public byte[] getScanData() {
+        return this.scanData;
+    }
+
+    /**
+     * @param scanData the scanData to set
+     */
+    public void setScanData(byte[] scanData) {
+        this.scanData = scanData;
+    }
+
+    /**
+     * @return the scanOCRText
+     */
+    public String getScanOCRText() {
+        return this.scanOCRText;
+    }
+
+    /**
+     * @param scanOCRText the scanOCRText to set
+     */
+    public void setScanOCRText(String scanOCRText) {
+        this.scanOCRText = scanOCRText;
+    }
+
+    /**
+     * @return the payments
+     */
+    public List<Payment> getPayments() {
+        return Collections.unmodifiableList(this.payments);
+    }
+
+    /**
+     * @param payments the payments to set
+     */
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
     
 }

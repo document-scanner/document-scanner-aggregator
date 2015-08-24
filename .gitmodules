@@ -7,3 +7,10 @@
 [submodule "reflection-form-builder"]
 	path = reflection-form-builder
 	url = git@github.com:krichter722/reflection-form-builder.git
+[submodule "reflection-form-builder-jpa"]
+	path = reflection-form-builder-jpa
+	url = git@github.com:krichter722/reflection-form-builder-jpa.git
+[submodule "commons-math"]
+	path = commons-math
+	url = git@github.com:krichter722/commons-math.git
+	branch = wrapper_constructor

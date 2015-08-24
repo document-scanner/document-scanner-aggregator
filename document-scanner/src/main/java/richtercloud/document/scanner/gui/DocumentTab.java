@@ -3,9 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package richtercloud.orientdb.document.scanner.gui;
+package richtercloud.document.scanner.gui;
 
-import javax.swing.JScrollPane;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.math.MathContext;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.imageio.ImageIO;
+import javax.persistence.EntityManager;
+import javax.swing.JComponent;
+import org.apache.commons.math4.stat.descriptive.DescriptiveStatistics;
+import richtercloud.document.scanner.ocr.OCREngine;
+import richtercloud.document.scanner.setter.ValueSetter;
+import richtercloud.reflection.form.builder.components.OCRResultPanelRetriever;
+import richtercloud.reflection.form.builder.components.ScanResultPanelRetriever;
+import richtercloud.reflection.form.builder.retriever.ValueRetriever;
 
 /**
  *
@@ -14,17 +30,76 @@ import javax.swing.JScrollPane;
 public class DocumentTab extends javax.swing.JPanel {
     private static final long serialVersionUID = 1L;
     private String title;
-
-    /**
-     * Creates new form DocumentTab
-     */
-    public DocumentTab() {
-        initComponents();
+    private DocumentForm documentForm;
+    private OCRSelectComponent oCRSelectComponent;
+    private OCREngine oCREngine;
+    
+    public DocumentTab(String title, OCRSelectComponent oCRSelectComponent, OCREngine oCREngine, Set<Class<?>> entityClasses, EntityManager entityManager) throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        this.title = title;
+        this.oCRSelectComponent = oCRSelectComponent;
+        this.oCREngine = oCREngine;
+        OCRResultPanelRetriever oCRResultPanelRetriever = new OCRResultPanelRetriever() {
+            private final List<Double> stringBufferLengths = new ArrayList<>();
+            @Override
+            public String retrieve() {
+                //estimate the initial StringBuilder size based on the median
+                //of all prior OCR results (string length) (and 1000 initially)
+                int stringBufferLengh;
+                if(stringBufferLengths.isEmpty()) {
+                    stringBufferLengh = 1000;
+                }else {
+                    DescriptiveStatistics descriptiveStatistics = new DescriptiveStatistics(stringBufferLengths.toArray(new Double[stringBufferLengths.size()]));
+                    stringBufferLengh = ((int)descriptiveStatistics.getPercentile(.5))+1;
+                }
+                stringBufferLengths.add((double)stringBufferLengh);
+                StringBuilder retValueBuilder = new StringBuilder(stringBufferLengh);
+                for(OCRSelectPanel oCRSelectComponent : DocumentTab.this.oCRSelectComponent.getImagePanels()) {
+                    String oCRResult = DocumentTab.this.oCREngine.recognizeImage(oCRSelectComponent.getImage());
+                    retValueBuilder.append(oCRResult);
+                }
+                String retValue = retValueBuilder.toString();
+                return retValue;
+            }
+        };
+        ScanResultPanelRetriever scanResultPanelRetriever = new ScanResultPanelRetriever() {
+            @Override
+            public byte[] retrieve() {
+                ByteArrayOutputStream retValueStream = new ByteArrayOutputStream();
+                for(OCRSelectPanel oCRSelectComponent : DocumentTab.this.oCRSelectComponent.getImagePanels()) {
+                    try {
+                        if(!ImageIO.write( oCRSelectComponent.getImage(), "png", retValueStream )) {
+                            throw new IllegalStateException("writing image data to output stream failed");
+                        }
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+                return retValueStream.toByteArray();
+            }
+        };
+        this.documentForm = new DocumentForm(entityClasses, entityManager, oCRResultPanelRetriever, scanResultPanelRetriever);
+        this.initComponents();
+        imageScrollPane.getViewport().setView(oCRSelectComponent);
+        this.splitPane.setRightComponent(this.documentForm);
     }
     
-    public DocumentTab(String title) {
-        this();
-        this.title = title;
+    public DocumentTab(String title, 
+            OCRSelectComponent oCRSelectComponent, 
+            OCREngine oCREngine, 
+            Set<Class<?>> entityClasses, Map<Class<?>, Class<? extends JComponent>> classMapping, 
+            Map<Class<? extends JComponent>, ValueRetriever<?,?>> valueRetrieverMapping, 
+            Map<Class<? extends JComponent>, ValueSetter<?>> valueSetterMapping, 
+            EntityManager entityManager, 
+            OCRResultPanelRetriever oCRResultPanelRetriever, 
+            ScanResultPanelRetriever scanResultPanelRetriever) throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        this(title, oCRSelectComponent, oCREngine, entityClasses, entityManager);
+        this.documentForm = new DocumentForm(entityClasses, 
+                classMapping, 
+                valueRetrieverMapping, 
+                valueSetterMapping, 
+                entityManager, 
+                oCRResultPanelRetriever, 
+                scanResultPanelRetriever);
     }
 
     /**
@@ -37,11 +112,9 @@ public class DocumentTab extends javax.swing.JPanel {
     private void initComponents() {
 
         splitPane = new javax.swing.JSplitPane();
-        documentForm = new richtercloud.orientdb.document.scanner.gui.DocumentForm();
         imageScrollPane = new javax.swing.JScrollPane();
 
         splitPane.setDividerLocation(350);
-        splitPane.setRightComponent(documentForm);
         splitPane.setLeftComponent(imageScrollPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -57,29 +130,33 @@ public class DocumentTab extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(splitPane)
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public JScrollPane getImageScrollPane() {
-        return imageScrollPane;
-    }
-
-    protected void setImageScrollPane(JScrollPane imageScrollPane) {
-        this.imageScrollPane = imageScrollPane;
-    }
-
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     protected void setTitle(String title) {
         this.title = title;
     }
 
+    public DocumentForm getDocumentForm() {
+        return this.documentForm;
+    }
+
+    public OCRSelectComponent getoCRSelectComponent() {
+        return oCRSelectComponent;
+    }
+
+    public void setoCRSelectComponent(OCRSelectComponent oCRSelectComponent) {
+        this.oCRSelectComponent = oCRSelectComponent;
+        this.imageScrollPane.getViewport().setView(this.oCRSelectComponent);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private richtercloud.orientdb.document.scanner.gui.DocumentForm documentForm;
     private javax.swing.JScrollPane imageScrollPane;
     private javax.swing.JSplitPane splitPane;
     // End of variables declaration//GEN-END:variables

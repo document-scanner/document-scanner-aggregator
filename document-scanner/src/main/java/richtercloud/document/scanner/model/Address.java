@@ -3,26 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package richtercloud.orientdb.document.scanner.model;
+package richtercloud.document.scanner.model;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author richter
  */
+@Entity
 public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
+    @Id
+    private Long id;
     private String street;
     private String number;
     private String region;
     private String city;
     private String country;
+    private String additional;
 
     protected Address() {
     }
 
-    public Address(String street, String number, String region, String city, String country) {
+    public Address(Long id, String street, String number, String region, String city, String country) {
+        this.id = id;
         this.street = street;
         this.number = number;
         this.region = region;
@@ -30,11 +37,19 @@ public class Address implements Serializable {
         this.country = country;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     /**
      * @return the street
      */
     public String getStreet() {
-        return street;
+        return this.street;
     }
 
     /**
@@ -48,7 +63,7 @@ public class Address implements Serializable {
      * @return the number
      */
     public String getNumber() {
-        return number;
+        return this.number;
     }
 
     /**
@@ -62,7 +77,7 @@ public class Address implements Serializable {
      * @return the region
      */
     public String getRegion() {
-        return region;
+        return this.region;
     }
 
     /**
@@ -76,7 +91,7 @@ public class Address implements Serializable {
      * @return the city
      */
     public String getCity() {
-        return city;
+        return this.city;
     }
 
     /**
@@ -90,7 +105,7 @@ public class Address implements Serializable {
      * @return the country
      */
     public String getCountry() {
-        return country;
+        return this.country;
     }
 
     /**
@@ -98,5 +113,19 @@ public class Address implements Serializable {
      */
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    /**
+     * @return the additional
+     */
+    public String getAdditional() {
+        return this.additional;
+    }
+
+    /**
+     * @param additional the additional to set
+     */
+    public void setAdditional(String additional) {
+        this.additional = additional;
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package richtercloud.orientdb.document.scanner.gui;
+package richtercloud.document.scanner.gui;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -19,12 +19,12 @@ public class MessagePanelEntry extends javax.swing.JPanel {
      * Creates new form MessagePanelEntry
      */
     public MessagePanelEntry() {
-        initComponents();
+        this.initComponents();
     }
 
     public MessagePanelEntry(JComponent... comps) {
         this();
-        init0(comps);
+        this.init0(comps);
     }
 
     /**
@@ -35,12 +35,12 @@ public class MessagePanelEntry extends javax.swing.JPanel {
      * @param comps 
      */
     public void init(JComponent... comps) {
-        init0(comps);
+        this.init0(comps);
     }        
 
     private void init0(JComponent... comps) {
         for(JComponent comp : comps) {
-            messagePanel.add(comp);
+            this.messagePanel.add(comp);
         }
     }
 
@@ -49,7 +49,7 @@ public class MessagePanelEntry extends javax.swing.JPanel {
      * @param messagePanel 
      */
     public void init(JPanel messagePanel) {
-        init0(messagePanel);
+        this.init0(messagePanel);
     }
 
     private void init0(JPanel messagePanel) {

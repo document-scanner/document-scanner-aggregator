@@ -1,1 +1,4 @@
 /orientdb-document-scanner/target/
+/document-scanner/target/
+/reflection-form-builder/target/
+document-scanner/derby.log
