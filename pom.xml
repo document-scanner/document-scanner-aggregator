@@ -12,6 +12,7 @@
         <module>reflection-form-builder</module>
         <module>reflection-form-builder-jpa</module>
         <module>commons-math</module>
+        <module>document-scanner</module>
     </modules>
     <name>document-scanner-aggregator</name>
 </project>
