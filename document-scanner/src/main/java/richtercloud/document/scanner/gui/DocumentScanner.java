@@ -1,7 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package richtercloud.document.scanner.gui;
 
@@ -136,22 +145,22 @@ public class DocumentScanner extends javax.swing.JFrame {
     private Map<Class, StorageConfPanel> storageConfPanelMap = new HashMap<>();
     private ListModel storageListModel = new DefaultListModel();
     private final static Set<Class<?>> ENTITY_CLASSES = Collections.unmodifiableSet(new HashSet<Class<?>>(
-            Arrays.asList(Address.class, 
-            Bill.class, 
-            Company.class, 
-            Document.class, 
-            EmailAddress.class, 
-            Employment.class, 
-            FinanceAccount.class, 
-            Leaflet.class, 
-            APackage.class, 
-            Payment.class, 
-            Person.class, 
-            Shipping.class, 
-            TelephoneCall.class, 
+            Arrays.asList(Address.class,
+            Bill.class,
+            Company.class,
+            Document.class,
+            EmailAddress.class,
+            Employment.class,
+            FinanceAccount.class,
+            Leaflet.class,
+            APackage.class,
+            Payment.class,
+            Person.class,
+            Shipping.class,
+            TelephoneCall.class,
             TransportTicket.class)));
     private static final String DATABASE_DIR_NAME_DEFAULT = "databases";
-    private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("richtercloud_document-scanner_jar_1.0-SNAPSHOTPU");
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("richtercloud_document-scanner_jar_1.0-SNAPSHOTPU");
     private EntityManager entityManager;
     private Connection conn;
     private final static int EXIT_SUCCESS = 0;
@@ -177,7 +186,7 @@ public class DocumentScanner extends javax.swing.JFrame {
         }
         if(this.conf.containsKey(CONF_KEY_STORAGE_TYPE)) {
             if(CONF_KEY_STORAGE_TYPE.equals(DefaultPersistenceStorage.class.toString())) {
-                DerbyPersistenceStorageConfPanel derbyPersistenceStorage = new DerbyPersistenceStorageConfPanel(this.entityManager, entityManagerFactory);
+                DerbyPersistenceStorageConfPanel derbyPersistenceStorage = new DerbyPersistenceStorageConfPanel(this.entityManager, ENTITY_MANAGER_FACTORY);
                 derbyPersistenceStorage.load(this.conf);
             }
         }
@@ -258,7 +267,7 @@ public class DocumentScanner extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private final static File HOME_DIR = new File(System.getProperty("user.home"));
     private final static File CONFIG_DIR = new File(HOME_DIR, CONFIG_DIR_NAME);
     private final static File DATABASE_DIR = new File(CONFIG_DIR, DATABASE_DIR_NAME_DEFAULT);
@@ -273,18 +282,18 @@ public class DocumentScanner extends javax.swing.JFrame {
             CONFIG_DIR.mkdir();
             LOGGER.info("created inexisting configuration directory '{}'", CONFIG_DIR_NAME);
         }
-        
+
         Class<?> driver = EmbeddedDriver.class;
         try {
             driver.newInstance();
             this.conn = DriverManager.getConnection(String.format("%s;create=%s", DERBY_CONNECTION_URL, !DATABASE_DIR.exists()));
-            this.entityManager = entityManagerFactory.createEntityManager();
+            this.entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         } catch (InstantiationException | IllegalAccessException | SQLException ex) {
             throw new RuntimeException(ex);
         }
-        
+
         this.initComponents();
-        
+
         //loading properties depends on initComponents because exceptions are
         //handled with GUI elements
         this.configFile = new File(CONFIG_DIR, CONFIG_FILE_NAME);
@@ -299,7 +308,7 @@ public class DocumentScanner extends javax.swing.JFrame {
         }else {
             LOGGER.info("no previous configuration found in configuration directry '{}', using default values", CONFIG_DIR.getAbsolutePath());
         }
-        
+
         this.onDeviceUnset();
         this.scannerDialogTableModel.addColumn("Name");
         this.scannerDialogTableModel.addColumn("Model");
@@ -319,11 +328,7 @@ public class DocumentScanner extends javax.swing.JFrame {
         } catch (IOException | InterruptedException ex) {
             throw new RuntimeException(ex);
         }
-//        try {
-            this.oCREngineConfPanelMap.put(TesseractOCREngine.class, this.tesseractOCREngineConfPanel);
-//        } catch (IOException | InterruptedException ex) {
-//            throw new RuntimeException(ex);
-//        }
+        this.oCREngineConfPanelMap.put(TesseractOCREngine.class, this.tesseractOCREngineConfPanel);
         this.oCREngineComboBoxModel.addElement(TesseractOCREngine.class);
         this.oCRDialogEngineComboBox.addItemListener(new ItemListener() {
             @Override
@@ -344,10 +349,10 @@ public class DocumentScanner extends javax.swing.JFrame {
         this.oCRDialogPanel.revalidate();
         this.pack();
         this.oCRDialogPanel.repaint();
-        
+
         this.storageCreateDialogTypeComboBoxModel.addElement(DefaultPersistenceStorage.class);
-        DerbyPersistenceStorageConfPanel derbyStorageConfPanel; 
-        derbyStorageConfPanel = new DerbyPersistenceStorageConfPanel(this.entityManager, entityManagerFactory); //@TODO: replace with classpath annotation discovery
+        DerbyPersistenceStorageConfPanel derbyStorageConfPanel;
+        derbyStorageConfPanel = new DerbyPersistenceStorageConfPanel(this.entityManager, ENTITY_MANAGER_FACTORY); //@TODO: replace with classpath annotation discovery
         this.storageConfPanelMap.put(DefaultPersistenceStorage.class, derbyStorageConfPanel);
         this.storageCreateDialogTypeComboBox.addItemListener(new ItemListener() {
             @Override
@@ -630,11 +635,6 @@ public class DocumentScanner extends javax.swing.JFrame {
         oCRDialog.setModal(true);
 
         oCRDialogEngineComboBox.setModel(oCREngineComboBoxModel);
-        oCRDialogEngineComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oCRDialogEngineComboBoxActionPerformed(evt);
-            }
-        });
 
         oCRDialogEngineLabel.setText("OCR engine");
 
@@ -1052,10 +1052,6 @@ public class DocumentScanner extends javax.swing.JFrame {
         this.oCRDialog.setVisible(true);
     }//GEN-LAST:event_oCRMenuItemActionPerformed
 
-    private void oCRDialogEngineComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oCRDialogEngineComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_oCRDialogEngineComboBoxActionPerformed
-
     private void oCRDialogCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oCRDialogCancelButtonActionPerformed
         this.oCRDialog.setVisible(false);
     }//GEN-LAST:event_oCRDialogCancelButtonActionPerformed
@@ -1148,16 +1144,16 @@ public class DocumentScanner extends javax.swing.JFrame {
     /**
      * for code reusage in {@link #searchScanner() }
      * @param ex
-     * @param additional 
+     * @param additional
      */
     private void handleSearchScannerException(Exception ex, String additional) {
         String message = ex.getMessage();
-            if(ex.getCause() != null) {
-                message = String.format("%s (caused by '%s')", message, ex.getCause().getMessage());
-            }
-            this.scannerDialogStatusLabel.setText(String.format("<html>The search at the specified address failed with the following error: %s%s</html>", message, additional));
+        if(ex.getCause() != null) {
+            message = String.format("%s (caused by '%s')", message, ex.getCause().getMessage());
+        }
+        this.scannerDialogStatusLabel.setText(String.format("<html>The search at the specified address failed with the following error: %s%s</html>", message, additional));
     }
-    
+
     private void searchScanner() {
         String addressString = this.scannerDialogAddressTextField.getText();
         InetAddress address;
@@ -1292,7 +1288,7 @@ public class DocumentScanner extends javax.swing.JFrame {
         this.pack();
         this.invalidate();
     }
-    
+
     private OCREngine retrieveOCREninge() {
         if(this.currentOCREngineConfPanel == null || this.currentOCREngineConfPanel.getOCREngine() == null) {
             JOptionPane.showMessageDialog(this, "OCREngine isn't set up", String.format("Warning - %s %s", APP_NAME, APP_VERSION), JOptionPane.ERROR_MESSAGE);
