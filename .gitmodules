@@ -3,7 +3,7 @@
 	url = https://github.com/sjamesr/jfreesane.git
 [submodule "javaocr"]
 	path = javaocr
-	url = git://git.code.sf.net/p/javaocr/source
+	url = https://github.com/krichter722/javaocr
 [submodule "reflection-form-builder"]
 	path = reflection-form-builder
 	url = https://github.com/krichter722/reflection-form-builder.git
