@@ -12,6 +12,7 @@
         <module>message-handler</module>
         <module>reflection-form-builder-aggregator</module>
         <module>swing-worker-get-wait-dialog</module>
+        <module>document-scanner-ifaces</module>
         <module>document-scanner-docking-frames</module>
         <module>document-scanner-flexdock</module>
         <module>document-scanner</module>

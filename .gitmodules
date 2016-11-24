@@ -42,3 +42,6 @@
 [submodule "document-scanner-it"]
 	path = document-scanner-it
 	url = git@github.com:krichter722/document-scanner-it
+[submodule "document-scanner-ifaces"]
+	path = document-scanner-ifaces
+	url = git@github.com:krichter722/document-scanner-ifaces
