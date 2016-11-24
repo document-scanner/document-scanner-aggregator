@@ -7,13 +7,16 @@
     <packaging>pom</packaging>
     <modules>
         <module>javaocr</module>
-        <module>document-scanner</module>
         <module>commons-math</module>
         <module>JDatePicker</module>
-        <module>document-scanner-demo</module>
-        <module>document-scanner-it</module>
+        <module>message-handler</module>
+        <module>reflection-form-builder-aggregator</module>
+        <module>swing-worker-get-wait-dialog</module>
         <module>document-scanner-docking-frames</module>
         <module>document-scanner-flexdock</module>
+        <module>document-scanner</module>
+        <module>document-scanner-demo</module>
+        <module>document-scanner-it</module>
     </modules>
     <name>document-scanner-aggregator</name>
 </project>

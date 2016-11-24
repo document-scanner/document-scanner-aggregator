@@ -30,3 +30,15 @@
 [submodule "document-scanner-docking-frames"]
 	path = document-scanner-docking-frames
 	url = git@github.com:krichter722/document-scanner-docking-frames
+[submodule "message-handler"]
+	path = message-handler
+	url = git@github.com:krichter722/message-handler
+[submodule "reflection-form-builder-aggregator"]
+	path = reflection-form-builder-aggregator
+	url = git@github.com:krichter722/reflection-form-builder-aggregator
+[submodule "swing-worker-get-wait-dialog"]
+	path = swing-worker-get-wait-dialog
+	url = git@github.com:krichter722/swing-worker-get-wait-dialog
+[submodule "document-scanner-it"]
+	path = document-scanner-it
+	url = git@github.com:krichter722/document-scanner-it
