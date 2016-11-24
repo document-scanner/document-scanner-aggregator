@@ -12,6 +12,8 @@
         <module>JDatePicker</module>
         <module>document-scanner-demo</module>
         <module>document-scanner-it</module>
+        <module>document-scanner-docking-frames</module>
+        <module>document-scanner-flexdock</module>
     </modules>
     <name>document-scanner-aggregator</name>
 </project>
