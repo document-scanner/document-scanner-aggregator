@@ -20,7 +20,7 @@
 [submodule "JDatePicker"]
 	path = JDatePicker
 	url = git@github.com:krichter722/JDatePicker.git
-        branch = model_generics
+        branch = local
 [submodule "document-scanner-demo"]
 	path = document-scanner-demo
 	url = git@github.com:krichter722/document-scanner-demo
