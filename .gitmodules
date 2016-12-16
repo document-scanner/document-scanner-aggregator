@@ -1,6 +1,6 @@
 [submodule "jfreesane"]
 	path = jfreesane
-	url = https://github.com/sjamesr/jfreesane.git
+	url = https://github.com/krichter722/jfreesane.git
 [submodule "javaocr"]
 	path = javaocr
 	url = https://github.com/krichter722/javaocr
