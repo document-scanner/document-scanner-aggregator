@@ -6,7 +6,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>javaocr</module>
         <module>commons-math</module>
         <module>JDatePicker</module>
         <module>message-handler</module>
