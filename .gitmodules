@@ -6,42 +6,42 @@
 	url = https://github.com/krichter722/javaocr
 [submodule "reflection-form-builder"]
 	path = reflection-form-builder
-	url = https://github.com/krichter722/reflection-form-builder.git
+	url = https://github.com/document-scanner/reflection-form-builder.git
 [submodule "reflection-form-builder-jpa"]
 	path = reflection-form-builder-jpa
-	url = https://github.com/krichter722/reflection-form-builder-jpa.git
+	url = https://github.com/document-scanner/reflection-form-builder-jpa.git
 [submodule "commons-math"]
 	path = commons-math
 	url = https://github.com/krichter722/commons-math.git
 	branch = wrapper_constructor
 [submodule "document-scanner"]
 	path = document-scanner
-	url = https://github.com/krichter722/document-scanner.git
+	url = https://github.com/document-scanner/document-scanner.git
 [submodule "JDatePicker"]
 	path = JDatePicker
 	url = https://github.com/krichter722/JDatePicker.git
         branch = local
 [submodule "document-scanner-demo"]
 	path = document-scanner-demo
-	url = https://github.com/krichter722/document-scanner-demo
+	url = https://github.com/document-scanner/document-scanner-demo
 [submodule "document-scanner-flexdock"]
 	path = document-scanner-flexdock
-	url = https://github.com/krichter722/document-scanner-flexdock
+	url = https://github.com/document-scanner/document-scanner-flexdock
 [submodule "document-scanner-docking-frames"]
 	path = document-scanner-docking-frames
-	url = https://github.com/krichter722/document-scanner-docking-frames
+	url = https://github.com/document-scanner/document-scanner-docking-frames
 [submodule "message-handler"]
 	path = message-handler
-	url = https://github.com/krichter722/message-handler
+	url = https://github.com/document-scanner/message-handler
 [submodule "reflection-form-builder-aggregator"]
 	path = reflection-form-builder-aggregator
-	url = https://github.com/krichter722/reflection-form-builder-aggregator
+	url = https://github.com/document-scanner/reflection-form-builder-aggregator
 [submodule "swing-worker-get-wait-dialog"]
 	path = swing-worker-get-wait-dialog
-	url = https://github.com/krichter722/swing-worker-get-wait-dialog
+	url = https://github.com/document-scanner/swing-worker-get-wait-dialog
 [submodule "document-scanner-it"]
 	path = document-scanner-it
-	url = https://github.com/krichter722/document-scanner-it
+	url = https://github.com/document-scanner/document-scanner-it
 [submodule "document-scanner-ifaces"]
 	path = document-scanner-ifaces
-	url = https://github.com/krichter722/document-scanner-ifaces
+	url = https://github.com/document-scanner/document-scanner-ifaces
