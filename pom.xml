@@ -8,6 +8,7 @@
     <modules>
         <module>commons-math</module>
         <module>JDatePicker</module>
+        <module>flexdock</module>
         <module>message-handler</module>
         <module>reflection-form-builder-aggregator</module>
         <module>swing-worker-get-wait-dialog</module>

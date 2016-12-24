@@ -45,3 +45,6 @@
 [submodule "document-scanner-ifaces"]
 	path = document-scanner-ifaces
 	url = https://github.com/document-scanner/document-scanner-ifaces
+[submodule "flexdock"]
+	path = flexdock
+	url = https://github.com/opencollab/flexdock
