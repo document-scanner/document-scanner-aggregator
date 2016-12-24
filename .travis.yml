@@ -1,4 +1,14 @@
 language: java
+sudo: required
+# necessary in order to avoid killing of certain tests because of memory consumption (not sure why adding `sudo: required` changes this)
+
+jdk:
+- oraclejdk8
+# `openjdk8` not available
+
+env:
+- MAVEN_OPTS="-Xmx6g -Xms2g"
+
 before_install:
 # We need Maven < 3.2 because it's enforced in `javaocr`
 - wget http://mirrors.ae-online.de/apache/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
@@ -9,4 +19,5 @@ before_install:
 install: /bin/true
 
 script:
-- mvn clean install
+- env MAVEN_OPTS="-Xmx6g -Xms2g" mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+- env MAVEN_OPTS="-Xmx6g -Xms2g" mvn test -B
