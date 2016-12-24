@@ -5,13 +5,8 @@ before_install:
 - tar xf apache-maven-3.1.1-bin.tar.gz
 - export M2_HOME=$PWD/apache-maven-3.1.1
 - export PATH=$M2_HOME/bin:$PATH
-# We need the Android SDK since we're working on `javaocr` an need to make sure to not break its functionality
-- wget https://dl.google.com/dl/android/studio/ide-zips/2.2.2.0/android-studio-ide-145.3360264-linux.zip
-- unzip -q android-studio-ide-145.3360264-linux.zip
-# -q in order to avoid listing of each file and enlarging the Travis log without a clear advantage
 
 install: /bin/true
 
 script:
-- ls
-- mvn clean install -Dandroid.sdk.path=android-studio
+- mvn clean install
