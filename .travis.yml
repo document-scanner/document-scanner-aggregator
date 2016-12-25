@@ -15,6 +15,9 @@ before_install:
 - tar xf apache-maven-3.1.1-bin.tar.gz
 - export M2_HOME=$PWD/apache-maven-3.1.1
 - export PATH=$M2_HOME/bin:$PATH
+- sudo apt-get update
+- sudo apt-get install --yes genisoimage
+# necessary for `sh.tak.appbundler:appbundle-maven-plugin:1.2.0:bundle`
 
 install: /bin/true
 
