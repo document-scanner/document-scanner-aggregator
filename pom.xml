@@ -6,12 +6,20 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
+        <module>izpack</module>
+            <!-- provides changes which avoid creation of invalid .desktop files -->
         <module>commons-math</module>
+            <!-- provides DescriptiveStatistics with Double[] constructor -->
         <module>JDatePicker</module>
+            <!-- provides JDatePicker components with typesafe models -->
         <module>flexdock</module>
+            <!-- provides flexdock 1.2.3 which isn't available at repo.maven.org yet -->
         <module>message-handler</module>
+            <!-- not provided on repo.maven.org, yet -->
         <module>reflection-form-builder-aggregator</module>
+            <!-- not provided on repo.maven.org, yet -->
         <module>swing-worker-get-wait-dialog</module>
+            <!-- not provided on repo.maven.org, yet -->
         <module>document-scanner-ifaces</module>
         <module>document-scanner-docking-frames</module>
         <module>document-scanner-flexdock</module>

@@ -48,3 +48,6 @@
 [submodule "flexdock"]
 	path = flexdock
 	url = https://github.com/opencollab/flexdock
+[submodule "izpack"]
+	path = izpack
+	url = https://github.com/krichter722/izpack
