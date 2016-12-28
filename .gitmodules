@@ -51,3 +51,6 @@
 [submodule "izpack"]
 	path = izpack
 	url = https://github.com/krichter722/izpack
+[submodule "document-scanner-valuedetection-sutime"]
+	path = document-scanner-valuedetection-sutime
+	url = https://github.com/document-scanner/document-scanner-valuedetection-sutime

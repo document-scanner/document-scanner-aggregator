@@ -23,6 +23,7 @@
         <module>document-scanner-ifaces</module>
         <module>document-scanner-docking-frames</module>
         <module>document-scanner-flexdock</module>
+        <module>document-scanner-valuedetection-sutime</module>
         <module>document-scanner</module>
         <module>document-scanner-demo</module>
         <module>document-scanner-it</module>
