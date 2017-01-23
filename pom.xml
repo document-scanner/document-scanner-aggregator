@@ -14,6 +14,8 @@
             <!-- provides JDatePicker components with typesafe models -->
         <module>flexdock</module>
             <!-- provides flexdock 1.2.3 which isn't available at repo.maven.org yet -->
+        <module>credential-store</module>
+            <!-- not provided on repo.maven.org, yet -->
         <module>message-handler</module>
             <!-- not provided on repo.maven.org, yet -->
         <module>reflection-form-builder-aggregator</module>

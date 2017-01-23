@@ -54,3 +54,6 @@
 [submodule "document-scanner-valuedetection-sutime"]
 	path = document-scanner-valuedetection-sutime
 	url = https://github.com/document-scanner/document-scanner-valuedetection-sutime
+[submodule "credential-store"]
+	path = credential-store
+	url = https://github.com/document-scanner/credential-store
