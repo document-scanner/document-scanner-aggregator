@@ -16,7 +16,7 @@
             <!-- provides flexdock 1.2.3 which isn't available at repo.maven.org yet -->
         <module>credential-store</module>
             <!-- not provided on repo.maven.org, yet -->
-        <module>message-handler</module>
+        <module>message-handler-aggregator</module>
             <!-- not provided on repo.maven.org, yet -->
         <module>reflection-form-builder-aggregator</module>
             <!-- not provided on repo.maven.org, yet -->

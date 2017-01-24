@@ -57,3 +57,6 @@
 [submodule "credential-store"]
 	path = credential-store
 	url = https://github.com/document-scanner/credential-store
+[submodule "message-handler-aggregator"]
+	path = message-handler-aggregator
+	url = https://github.com/document-scanner/message-handler-aggregator
