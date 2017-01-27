@@ -4,12 +4,6 @@
 [submodule "javaocr"]
 	path = javaocr
 	url = https://github.com/krichter722/javaocr
-[submodule "reflection-form-builder"]
-	path = reflection-form-builder
-	url = https://github.com/document-scanner/reflection-form-builder.git
-[submodule "reflection-form-builder-jpa"]
-	path = reflection-form-builder-jpa
-	url = https://github.com/document-scanner/reflection-form-builder-jpa.git
 [submodule "commons-math"]
 	path = commons-math
 	url = https://github.com/krichter722/commons-math.git
