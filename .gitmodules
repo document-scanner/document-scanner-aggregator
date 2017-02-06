@@ -54,3 +54,6 @@
 [submodule "message-handler-aggregator"]
 	path = message-handler-aggregator
 	url = https://github.com/document-scanner/message-handler-aggregator
+[submodule "reflection-form-builder-parent"]
+	path = reflection-form-builder-parent
+	url = https://github.com/document-scanner/reflection-form-builder-parent
