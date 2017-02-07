@@ -24,9 +24,6 @@
 [submodule "document-scanner-docking-frames"]
 	path = document-scanner-docking-frames
 	url = https://github.com/document-scanner/document-scanner-docking-frames
-[submodule "message-handler"]
-	path = message-handler
-	url = https://github.com/document-scanner/message-handler
 [submodule "reflection-form-builder-aggregator"]
 	path = reflection-form-builder-aggregator
 	url = https://github.com/document-scanner/reflection-form-builder-aggregator
@@ -51,9 +48,9 @@
 [submodule "credential-store"]
 	path = credential-store
 	url = https://github.com/document-scanner/credential-store
-[submodule "message-handler-aggregator"]
-	path = message-handler-aggregator
-	url = https://github.com/document-scanner/message-handler-aggregator
 [submodule "reflection-form-builder-parent"]
 	path = reflection-form-builder-parent
 	url = https://github.com/document-scanner/reflection-form-builder-parent
+[submodule "message-handler-parent"]
+	path = message-handler-parent
+	url = https://github.com/document-scanner/message-handler-parent
