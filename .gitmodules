@@ -8,43 +8,22 @@
 	path = commons-math
 	url = https://github.com/krichter722/commons-math.git
 	branch = wrapper_constructor
-[submodule "document-scanner"]
-	path = document-scanner
-	url = https://github.com/document-scanner/document-scanner.git
 [submodule "JDatePicker"]
 	path = JDatePicker
 	url = https://github.com/krichter722/JDatePicker.git
         branch = local
-[submodule "document-scanner-demo"]
-	path = document-scanner-demo
-	url = https://github.com/document-scanner/document-scanner-demo
-[submodule "document-scanner-flexdock"]
-	path = document-scanner-flexdock
-	url = https://github.com/document-scanner/document-scanner-flexdock
-[submodule "document-scanner-docking-frames"]
-	path = document-scanner-docking-frames
-	url = https://github.com/document-scanner/document-scanner-docking-frames
 [submodule "reflection-form-builder-aggregator"]
 	path = reflection-form-builder-aggregator
 	url = https://github.com/document-scanner/reflection-form-builder-aggregator
 [submodule "swing-worker-get-wait-dialog"]
 	path = swing-worker-get-wait-dialog
 	url = https://github.com/document-scanner/swing-worker-get-wait-dialog
-[submodule "document-scanner-it"]
-	path = document-scanner-it
-	url = https://github.com/document-scanner/document-scanner-it
-[submodule "document-scanner-ifaces"]
-	path = document-scanner-ifaces
-	url = https://github.com/document-scanner/document-scanner-ifaces
 [submodule "flexdock"]
 	path = flexdock
 	url = https://github.com/opencollab/flexdock
 [submodule "izpack"]
 	path = izpack
 	url = https://github.com/krichter722/izpack
-[submodule "document-scanner-valuedetection-sutime"]
-	path = document-scanner-valuedetection-sutime
-	url = https://github.com/document-scanner/document-scanner-valuedetection-sutime
 [submodule "credential-store"]
 	path = credential-store
 	url = https://github.com/document-scanner/credential-store
@@ -54,3 +33,6 @@
 [submodule "message-handler-parent"]
 	path = message-handler-parent
 	url = https://github.com/document-scanner/message-handler-parent
+[submodule "document-scanner-parent"]
+	path = document-scanner-parent
+	url = https://github.com/document-scanner/document-scanner-parent

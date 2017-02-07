@@ -22,13 +22,7 @@
             <!-- not provided on repo.maven.org, yet -->
         <module>swing-worker-get-wait-dialog</module>
             <!-- not provided on repo.maven.org, yet -->
-        <module>document-scanner-ifaces</module>
-        <module>document-scanner-docking-frames</module>
-        <module>document-scanner-flexdock</module>
-        <module>document-scanner-valuedetection-sutime</module>
-        <module>document-scanner</module>
-        <module>document-scanner-demo</module>
-        <module>document-scanner-it</module>
+        <module>document-scanner-parent</module>
     </modules>
     <name>document-scanner-aggregator</name>
     <build>
