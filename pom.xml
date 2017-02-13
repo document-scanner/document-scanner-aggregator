@@ -6,6 +6,7 @@
     <version>1.0-beta2</version>
     <packaging>pom</packaging>
     <modules>
+        <!-- maven-parent can't be aggregated here -->
         <module>izpack</module>
             <!-- provides changes which avoid creation of invalid .desktop files -->
         <module>commons-math</module>
