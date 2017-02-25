@@ -2,6 +2,8 @@ language: java
 sudo: required
 # necessary in order to avoid killing of certain tests because of memory consumption (not sure why adding `sudo: required` changes this)
 
+# specifying other dists doesn't make sense because `trusty` doesn't have `oraclejdk8` (fails due to `Sorry, but JDK '[oraclejdk8]' is not known.`) which is the only supported JDK currently. Testing on Mac OSX doesn't make too much sense since it will run the same `maven` based build routine.
+
 jdk:
 - oraclejdk8
 # `openjdk8` not available
