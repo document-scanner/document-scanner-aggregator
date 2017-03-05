@@ -7,8 +7,6 @@
     <packaging>pom</packaging>
     <modules>
         <!-- maven-parent can't be aggregated here -->
-        <module>izpack</module>
-            <!-- provides changes which avoid creation of invalid .desktop files -->
         <module>commons-math</module>
             <!-- provides DescriptiveStatistics with Double[] constructor -->
         <module>JDatePicker</module>
