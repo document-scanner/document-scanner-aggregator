@@ -36,3 +36,6 @@
 [submodule "document-scanner-parent"]
 	path = document-scanner-parent
 	url = https://github.com/document-scanner/document-scanner-parent
+[submodule "validation-tools"]
+	path = validation-tools
+	url = https://github.com/krichter722/validation-tools
