@@ -39,3 +39,6 @@
 [submodule "validation-tools"]
 	path = validation-tools
 	url = https://github.com/krichter722/validation-tools
+[submodule "document-scanner-pmd-excludes"]
+	path = document-scanner-pmd-excludes
+	url = https://github.com/document-scanner/document-scanner-pmd-excludes
