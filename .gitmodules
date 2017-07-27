@@ -42,3 +42,9 @@
 [submodule "document-scanner-pmd-excludes"]
 	path = document-scanner-pmd-excludes
 	url = https://github.com/document-scanner/document-scanner-pmd-excludes
+[submodule "commons-numbers"]
+	path = commons-numbers
+	url = https://github.com/apache/commons-numbers.git
+[submodule "commons-rng"]
+	path = commons-rng
+	url = https://github.com/apache/commons-rng.git

@@ -7,6 +7,10 @@
     <packaging>pom</packaging>
     <modules>
         <!-- maven-parent can't be aggregated here -->
+        <!-- It doesn't make sense to build `commons-numbers` or `commons-rng` as aggregator project in order to avoid build failure on Travis CI due to unexplicable `[ERROR] Failed to execute goal org.codehaus.izpack:izpack-maven-plugin:5.1.1:izpack (default) on project document-scanner: Execution default of goal org.codehaus.izpack:izpack-maven-plugin:5.1.1:izpack failed: Plugin org.codehaus.izpack:izpack-maven-plugin:5.1.1 or one of its dependencies could not be resolved: The following artifacts could not be resolved: org.apache.commons:commons-numbers-core:jar:1.0-SNAPSHOT, org.apache.commons:commons-numbers-gamma:jar:1.0-SNAPSHOT, org.apache.commons:commons-numbers-fraction:jar:1.0-SNAPSHOT, org.apache.commons:commons-numbers-combinatorics:jar:1.0-SNAPSHOT, org.apache.commons:commons-numbers-arrays:jar:1.0-SNAPSHOT, org.apache.commons:commons-numbers-angle:jar:1.0-SNAPSHOT, org.apache.commons:commons-rng-sampling:jar:1.1-SNAPSHOT: Could not find artifact org.apache.commons:commons-numbers-core:jar:1.0-SNAPSHOT`
+                and `[ERROR] Failed to execute goal org.codehaus.izpack:izpack-maven-plugin:5.1.1:izpack (default) on project document-scanner: Execution default of goal org.codehaus.izpack:izpack-maven-plugin:5.1.1:izpack failed: Plugin org.codehaus.izpack:izpack-maven-plugin:5.1.1 or one of its dependencies could not be resolved: Could not find artifact org.apache.commons:commons-rng-sampling:jar:1.1-SNAPSHOT`
+                over multiple days (which excludes a caching issue as reason) because `commons-rng` is failing itself with
+                `[ERROR] Failed to execute goal org.jacoco:jacoco-maven-plugin:0.7.5.201505241946:check (default-check) on project commons-numbers-complex: Coverage checks have not been met.` -->
         <module>commons-math</module>
             <!-- provides DescriptiveStatistics with Double[] constructor -->
         <module>JDatePicker</module>
