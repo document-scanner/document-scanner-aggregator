@@ -38,6 +38,4 @@ script:
     # avoid conflict which instance started by integration tests (`mysql-server` and `mysqld` are unrecognized services)
 - sudo netstat -tupln
     # debug conflicting port for integration tests
-- env MAVEN_OPTS="-Xmx6g -Xms2g" mvn install --update-snapshots -DskipTests=true -Dmaven.javadoc.skip=true --batch-mode --show-version
-# --update-snapshots is necessary to be able to use izPack 5.0.11-SNAPSHOT
-- env MAVEN_OPTS="-Xmx6g -Xms2g" mvn test verify --batch-mode
+- env MAVEN_OPTS="-Xmx6g -Xms2g" mvn install --update-snapshots -DskipTests=true -Dmaven.javadoc.skip=true --batch-mode --show-version && mvn test verify --batch-mode
