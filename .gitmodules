@@ -48,3 +48,6 @@
 [submodule "commons-rng"]
 	path = commons-rng
 	url = https://github.com/apache/commons-rng.git
+[submodule "jhbuild-java-wrapper"]
+	path = jhbuild-java-wrapper
+	url = https://github.com/document-scanner/jhbuild-java-wrapper.git
