@@ -11,6 +11,7 @@
                 and `[ERROR] Failed to execute goal org.codehaus.izpack:izpack-maven-plugin:5.1.1:izpack (default) on project document-scanner: Execution default of goal org.codehaus.izpack:izpack-maven-plugin:5.1.1:izpack failed: Plugin org.codehaus.izpack:izpack-maven-plugin:5.1.1 or one of its dependencies could not be resolved: Could not find artifact org.apache.commons:commons-rng-sampling:jar:1.1-SNAPSHOT`
                 over multiple days (which excludes a caching issue as reason) because `commons-rng` is failing itself with
                 `[ERROR] Failed to execute goal org.jacoco:jacoco-maven-plugin:0.7.5.201505241946:check (default-check) on project commons-numbers-complex: Coverage checks have not been met.` -->
+        <module>code-analysis</module>
         <module>commons-math</module>
             <!-- provides DescriptiveStatistics with Double[] constructor -->
         <module>JDatePicker</module>

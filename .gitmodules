@@ -51,3 +51,6 @@
 [submodule "jhbuild-java-wrapper"]
 	path = jhbuild-java-wrapper
 	url = https://github.com/document-scanner/jhbuild-java-wrapper.git
+[submodule "code-analysis"]
+	path = code-analysis
+	url = https://github.com/krichter722/code-analysis

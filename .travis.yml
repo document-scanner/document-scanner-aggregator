@@ -28,7 +28,6 @@ before_install:
 - tar xf mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz && mv mysql-5.7.17-linux-glibc2.5-x86_64 $HOME/mysql-5.7.17
 # for integration tests
 - git clone https://github.com/krichter722/maven-parent && cd maven-parent && mvn install && cd ..
-- git clone https://github.com/krichter722/code-analysis && cd code-analysis && mvn install && cd ..
 
 install: /bin/true
 
