@@ -24,9 +24,6 @@
 [submodule "izpack"]
 	path = izpack
 	url = https://github.com/krichter722/izpack
-[submodule "credential-store"]
-	path = credential-store
-	url = https://github.com/document-scanner/credential-store
 [submodule "reflection-form-builder-parent"]
 	path = reflection-form-builder-parent
 	url = https://github.com/document-scanner/reflection-form-builder-parent
