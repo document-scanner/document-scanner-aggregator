@@ -22,11 +22,11 @@
             <!-- not provided on repo.maven.org, yet -->
         <module>validation-tools</module>
             <!-- not provided on repo.maven.org, yet -->
+        <module>jhbuild-java-wrapper</module>
+            <!-- not provided on repo.maven.org, yet -->
         <module>reflection-form-builder-parent</module>
             <!-- not provided on repo.maven.org, yet -->
         <module>swing-worker-get-wait-dialog</module>
-            <!-- not provided on repo.maven.org, yet -->
-        <module>jhbuild-java-wrapper</module>
             <!-- not provided on repo.maven.org, yet -->
         <module>document-scanner-parent</module>
     </modules>
