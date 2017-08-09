@@ -12,8 +12,6 @@
                 over multiple days (which excludes a caching issue as reason) because `commons-rng` is failing itself with
                 `[ERROR] Failed to execute goal org.jacoco:jacoco-maven-plugin:0.7.5.201505241946:check (default-check) on project commons-numbers-complex: Coverage checks have not been met.` -->
         <module>code-analysis</module>
-        <module>commons-math</module>
-            <!-- provides DescriptiveStatistics with Double[] constructor -->
         <module>JDatePicker</module>
             <!-- provides JDatePicker components with typesafe models -->
         <module>flexdock</module>

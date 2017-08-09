@@ -4,10 +4,6 @@
 [submodule "javaocr"]
 	path = javaocr
 	url = https://github.com/krichter722/javaocr
-[submodule "commons-math"]
-	path = commons-math
-	url = https://github.com/krichter722/commons-math.git
-	branch = wrapper_constructor
 [submodule "JDatePicker"]
 	path = JDatePicker
 	url = https://github.com/krichter722/JDatePicker.git
