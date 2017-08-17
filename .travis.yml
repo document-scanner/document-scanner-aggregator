@@ -9,7 +9,7 @@ jdk:
 # `openjdk8` not available
 
 env:
-- MAVEN_OPTS="-Xmx6g -Xms2g"
+- MAVEN_OPTS="-Xmx8g -Xms2g"
 
 before_install:
 # We need Maven < 3.2 because it's enforced in `javaocr`
@@ -37,6 +37,6 @@ script:
     # avoid conflict which instance started by integration tests (`mysql-server` and `mysqld` are unrecognized services)
 - sudo netstat -tupln
     # debug conflicting port for integration tests
-- env MAVEN_OPTS="-Xmx6g -Xms2g" mvn install --update-snapshots -DskipTests=true -Dmaven.javadoc.skip=true --batch-mode --show-version && mvn test verify --batch-mode
+- env MAVEN_OPTS="-Xmx8g -Xms2g" mvn install --update-snapshots -DskipTests=true -Dmaven.javadoc.skip=true --batch-mode --show-version && mvn test verify --batch-mode
     # - `--batch-mode` is necessary in order to avoid excessive updates during Maven artifact downloads which quickly exceed the Travis CI log size limit of 4MB which causes the build to fail
     # - redirection of rather unimportant commands like `mvn validate` and displaying the output in the `on_failure` part of the scriopt doesn't work if a command hangs to `/tmp/validate.log` because then `after_failure` isn't run
