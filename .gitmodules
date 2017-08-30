@@ -50,3 +50,6 @@
 [submodule "test-tools"]
 	path = test-tools
 	url = https://github.com/krichter722/test-tools
+[submodule "jollyday"]
+	path = jollyday
+	url = https://github.com/svendiedrichsen/jollyday.git

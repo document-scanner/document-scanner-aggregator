@@ -16,6 +16,8 @@
             <!-- provides JDatePicker components with typesafe models -->
         <module>flexdock</module>
             <!-- provides flexdock 1.2.3 which isn't available at repo.maven.org yet -->
+        <module>jollyday</module>
+            <!-- 0.5.3-SNAPSHOT which contains important fix not yet available in its declared snapshot repository -->
         <module>test-tools</module>
             <!-- not provided on repo.maven.org, yet -->
         <module>message-handler-parent</module>
