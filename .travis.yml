@@ -11,18 +11,8 @@ jdk:
 env:
 - MAVEN_OPTS="-Xmx8g -Xms2g"
 
-cache:
-  directories:
-  - $HOME/.m2
-    # necessary in order to avoid build timeout (> 45 minutes) for slow or
-    # unreachable www.mvnsearch.org which can be covered by other repositories
-
 before_install:
-# We need Maven < 3.2 because it's enforced in `javaocr`
-- wget http://mirrors.ae-online.de/apache/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
-- tar xf apache-maven-3.1.1-bin.tar.gz
-- export M2_HOME=$PWD/apache-maven-3.1.1
-- export PATH=$M2_HOME/bin:$PATH
+# previous meanwhile unused dependency `javaocr` needs Maven 3.1.1, but this version ignores mirror settings in $HOME/.m2/setting.xml (which 3.3.9 doesn't)
 - sudo apt-get update
 - sudo apt-get install --yes genisoimage
 # necessary for `sh.tak.appbundler:appbundle-maven-plugin:1.2.0:bundle`
@@ -43,6 +33,9 @@ script:
     # avoid conflict which instance started by integration tests (`mysql-server` and `mysqld` are unrecognized services)
 - sudo netstat -tupln
     # debug conflicting port for integration tests
+- echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n  <mirrors>\n    <mirror>\n      <id>mvnsearch-unavailable</id>\n      <name>mvnsearch-unavailable</name>\n      <mirrorOf>mvnsearch</mirrorOf>\n      <url>http://repo1.maven.org/maven2</url>\n    </mirror>\n  </mirrors>\n  <profiles>\n    <profile>\n      <id>no-mvnsearch</id>\n      <repositories>\n        <repository>\n          <id>mvnsearch</id>\n          <url>http://www.mvnsearch.org/maven2</url>\n          <releases>\n            <enabled>true</enabled>\n          </releases>\n          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n        </repository>\n      </repositories>\n    </profile>\n  </profiles>\n  <activeProfiles>\n    <activeProfile>no-mvnsearch</activeProfile>\n  </activeProfiles>\n</settings>' > $HOME/.m2/settings.xml
+    # works around unavailable http://www.mvnsearch.org/maven2 which causes `The job exceeded the maximum time limit for jobs, and has been terminated.` on Travis CI and might be fixed in newer versions of transitive dependencies, but it's more reliable to restrict access to it
+- cat $HOME/.m2/settings.xml
 - env MAVEN_OPTS="-Xmx8g -Xms2g" mvn install --update-snapshots -DskipTests=true -Dmaven.javadoc.skip=true --batch-mode --show-version && mvn test verify --batch-mode
     # - `--batch-mode` is necessary in order to avoid excessive updates during Maven artifact downloads which quickly exceed the Travis CI log size limit of 4MB which causes the build to fail
     # - redirection of rather unimportant commands like `mvn validate` and displaying the output in the `on_failure` part of the scriopt doesn't work if a command hangs to `/tmp/validate.log` because then `after_failure` isn't run
